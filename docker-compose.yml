@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+    web:
+        build: ./web
+    auth:
+        depends_on: 
+            - web
+        build: ./proxy
+        ports:
+            - 443:443
+            - 80:80
+        links:
+            - web
